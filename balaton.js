@@ -1,12 +1,12 @@
 class Hal {
-    constructor(magyar, latin, egyeb, url, kep ) {
-      this.fajMagyar = magyar;
-      this.fajLatin = latin;
-      this.egyebNevek = egyeb;
-      this.wikiUrl = url;
-      this.kepFajl = kep;
-    }
+  constructor(magyar, latin, egyeb, url, kep ) {
+    this.fajMagyar = magyar;
+    this.fajLatin = latin;
+    this.egyebNevek = egyeb;
+    this.wikiUrl = url;
+    this.kepFajl = kep;
   }
+}
 
 const halak = [];  
 halak['balin'] = new Hal("Balin","Leuciscus aspius","fenekeszeg, kapókeszeg, őnhal, ragadozó őn, villámkeszeg","https://hu.wikipedia.org/wiki/Balin_(halfaj)","balin.jpg");
@@ -22,13 +22,15 @@ halak['garda'] = new Hal("Garda","Pelecus cultratus"," sugár kardos (némely fo
 halak['harcsa'] = new Hal("Európai harcsa","Silurus glanis", "harcsa, leső harcsa, pozsárharcsa, pumaharcsa, sárgaharcsa, tőkésharcsa, köves harcsa, sebes harcsa, szürke harcsa, szőke harcsa, parasztfaló, kupri, kupak, kuppancs","https://hu.wikipedia.org/wiki/Európai_harcsa","harcsa.jpg")
 
 function halinfo(hal) {
-  document.getElementById('sugo').style.display = 'none';
-  document.getElementById('halURL').href = halak[hal].wikiUrl;
-  document.getElementById('halURL').alt = halak[hal].fajMagyar + " képe";
-  document.getElementById('halURL').title = halak[hal].fajMagyar + " Wikipédia oldala";
-  document.getElementById('halKep').src = halak[hal].kepFajl;
-  document.getElementById('halNevek').innerHTML = "<b>" + halak[hal].fajMagyar + " <i>(" + halak[hal].fajLatin + ")</i></b>";
-  if (halak[hal].egyebNevek == null) {
+    document.getElementById('sugo').style.display = 'none';
+    document.getElementById('halURL').href = halak[hal].wikiUrl;
+    document.getElementById('halURL').alt = halak[hal].fajMagyar + " képe";
+    document.getElementById('halURL').title = halak[hal].fajMagyar + " Wikipédia oldala";
+    document.getElementById('halKep').src = "halak/" + halak[hal].kepFajl; 
+    document.getElementById('halNevek').innerHTML = "<b>" + halak[hal].fajMagyar + " <i>(" + halak[hal].fajLatin + ")</i></b>";
+
+    
+    if (halak[hal].egyebNevek != null) {
       document.getElementById('halNevek').innerHTML += "<br>Egyéb elnevezés(ek):<br>" + halak[hal].egyebNevek;
   }
-}
+    }
